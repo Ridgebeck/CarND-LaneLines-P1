@@ -12,7 +12,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./output_images/solidWhiteCurve.jpg "Original"
+[image1]: ./test_images/solidWhiteCurve.jpg "Original"
 [image2]: ./output_images/solidWhiteCurve_gray.jpg "Grayscale"
 [image3]: ./output_images/solidWhiteCurve_blur_gray.jpg "Gaussian"
 [image4]: ./output_images/solidWhiteCurve_masked_edges.jpg "Canny"
