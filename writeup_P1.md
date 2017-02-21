@@ -27,17 +27,17 @@ The goals / steps of this project are the following:
 
 ####My pipeline consists of 5 steps starting from the original image:
 ![alt text][image1]
-####1. Images get converted to grayscale
+####1. Convert image to grayscale
 ![alt text][image2]
-####2. Apply Gaussian blur
+####2. Apply Gaussian Blur
 ![alt text][image3]
-####3. Apply Canny edge detection and apply mask (are of interest) to the image 
+####3. Apply Canny Edge Detection and apply mask (area of interest) to the image 
 ![alt text][image4]
 ####4. Calculate Hough lines of the masked Canny edge picture 
 ![alt text][image5]
 ####5. Create two averaged and extrapolated lines
   * Categorize points according to slope and position into left and right line point cloud
-  * Use linear regression to fit a line through each point cloud (calculate coeffiecients)
+  * Use linear regression to fit a line through each point cloud (calculate coefficients)
   * Calculate end points in region of interest and draw lines into picture
 
 ![alt text][image6]
@@ -53,7 +53,7 @@ The goals / steps of this project are the following:
 ####8. Driving at night with headlights could influence edge detection and area of interest significantly
 ####9. and many more...
 
-###3. Possible improvements to your pipeline
+###3. Possible improvements to the pipeline
 ####1. Using a different color space than gray, e.g. hsl or hsv
 ####2. Detect cars and take all lines associated with them out of the line detection algorithm
 ####3. Use different sensors besides camera (LiDar etc.) for verifying results (sensor fusion)
