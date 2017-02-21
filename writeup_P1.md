@@ -1,3 +1,4 @@
+
 #**Finding Lane Lines on the Road** 
 
 ##Writeup for Self-Driving Car Engineer Nanodegree Project 1: Finding Lane Lines on the Road
@@ -5,15 +6,18 @@
 
 ---
 
-**Finding Lane Lines on the Road**
-
 The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
 
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images/solidWhiteCurve.jpg "Original"
+[image2]: ./test_images/solidWhiteCurve_gray.jpg "Grayscale"
+[image3]: ./test_images/solidWhiteCurve_blur_gray.jpg "Gaussian"
+[image4]: ./test_images/solidWhiteCurve_masked_edges.jpg "Canny"
+[image5]: ./test_images/solidWhiteCurve_masked_hough.jpg "Hough"
+[image6]: ./test_images/solidWhiteCurve_final_image.jpg "Final"
 
 ---
 
@@ -21,27 +25,38 @@ The goals / steps of this project are the following:
 
 ###1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 6 steps:
-
-1. First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
+####My pipeline consists of 5 steps starting from the original image:
 ![alt text][image1]
+####1. Images get converted to grayscale
+![alt text][image2]
+####2. Apply Gaussian blur
+![alt text][image3]
+####3. Apply Canny edge detection and apply mask (are of interest) to the image 
+![alt text][image4]
+####4. Calculate Hough lines of the masked Canny edge picture 
+![alt text][image5]
+####5. Create two averaged and extrapolated lines
+  * Categorize points according to slope and position into left and right line point cloud
+  * Use linear regression to fit a line through each point cloud (calculate coeffiecients)
+  * Calculate end points in region of interest and draw lines into picture
 
+![alt text][image6]
 
-###2. Identify potential shortcomings with your current pipeline
+###2. Possible shortcomings of the current pipeline
+####1. Shadows, edges, cars and other lines will be detected and interpreted
+####2. Colors are not used for detection and lines in grayscale can be hard to detect (depending on lighting etc)
+####3. No backup system (other sensors) in case of bad visibility
+####4. No algorithm for strech where no lines are detected
+####5. Situation where multiple lines are very close (e.g. construction zone) has not been considered
+####6. Tight turns and intersections have not been considered yet
+####7. Parking situation has not been implemented yet
+####8. Driving at night with headlights could influence edge detection and area of interest significantly
+####9. and many more...
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
-
-###3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+###3. Possible improvements to your pipeline
+####1. Using a different color space than gray, e.g. hsl or hsv
+####2. Detect cars and take all lines associated with them out of the line detection algorithm
+####3. Use different sensors besides camera (LiDar etc.) for verifying results (sensor fusion)
+####4. Changing parameters/thresholds based on conditions  (e.g. look for brighter lines in daylight)
+####5. Correct camera distortion
+####6. and many more...
